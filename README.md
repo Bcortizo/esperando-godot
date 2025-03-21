@@ -5,8 +5,8 @@ com o nome da própria engine (que foi, por sua vez, assim nomeada por causa da
 peça de teatro).
 
 Esse projeto também tem como objetivo estudar como se trabalhar com jogos 3D
-na Godot, revisar o processo de importação de modelos 3D, gerenciamento de ani-
-mações e prototipagens.
+na Godot, revisar o processo de importação de modelos 3D, gerenciamento de 
+animações e prototipagens.
 
 ------------------------------------------
 
