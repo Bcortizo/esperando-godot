@@ -11,5 +11,6 @@ mações e prototipagens.
 ------------------------------------------
 
 Lista de assets e tutoriais usados:
-	How to make 3D Games in Godot: https://www.youtube.com/watch?v=ke5KpqcoiIU&t=2771s
-	KayKit - Character Pack : Skeletons: https://kaylousberg.itch.io/kaykit-skeletons
+- How to make 3D Games in Godot: https://www.youtube.com/watch?v=ke5KpqcoiIU&t=2771s
+- KayKit - Character Pack : Skeletons: https://kaylousberg.itch.io/kaykit-skeletons
+- 3D TUTORIAL: Make Smooth 3D Movement in Godot 4: https://youtu.be/JlgZtOFMdfc?si=WQpWJb364fhtfCjp
