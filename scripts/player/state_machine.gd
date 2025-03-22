@@ -1,6 +1,6 @@
 extends Node
 
-## Define estado inicial
+# Define estado inicial
 @export var starting_state: PlayerState
 @export var animation_tree: AnimationTree
 @export var animation_machine_path: String

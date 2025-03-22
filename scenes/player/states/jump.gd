@@ -1,11 +1,8 @@
 extends PlayerState
 
+@export var fall_state: PlayerState
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func process_physics(delta: float) -> PlayerState:
+	if !parent.is_on_floor() and parent.velocity.y > 0:
+		return fall_state
+	return null

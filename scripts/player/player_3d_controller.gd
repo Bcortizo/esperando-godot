@@ -37,6 +37,7 @@ var _last_movement_direction := Vector3.BACK
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _blend_walk := false
 var _raw_input := Vector2.ZERO
+var _is_starting_jump := false
 var _can_move := true
 var _can_look := true
 
@@ -53,6 +54,8 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("ui_focus_next"):
+		_blend_walk = !_blend_walk
 
 func _unhandled_input(event: InputEvent) -> void:	
 	var is_camera_in_motion := (
@@ -98,37 +101,22 @@ func _physics_process(delta: float) -> void:
 	velocity.y = y_velocity - _gravity * delta
 	
 	# pulo
-	var is_starting_jump := Input.is_action_just_pressed(jump) and is_on_floor()
-	if is_starting_jump:
+	_is_starting_jump = Input.is_action_just_pressed(jump) and is_on_floor()
+	if _is_starting_jump:
 		velocity.y = jump_impulse
 	
 	# move personagem
 	if _can_move:
 		move_and_slide()
 	
-	if !_blend_walk:
 		# salva última direção movida
-		if move_direction.length() > 0.2:
-			_last_movement_direction = move_direction
+	if move_direction.length() > 0.2:
+		_last_movement_direction = move_direction
+		
+	if !_blend_walk:
 		# vira personagem na direção movida, interpolando linearmente o ângulo de rotação.
 		var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 		_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
 	#endregion
 	
 	_state_machine.process_physics(delta)
-	
-	#region Animações
-	#if is_starting_jump:
-		#_skin.jump()
-	#elif not is_on_floor():
-		#_skin.fall()
-	#elif is_on_floor():
-		#var ground_speed := velocity.length()
-		#if ground_speed > 0.0:
-			#if _blend_walk:
-				#_skin.locomotion()
-			#else:
-				#_skin.walking()
-		#else:
-			#_skin.idle()
-	#endregion

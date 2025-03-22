@@ -8,13 +8,6 @@ extends PlayerState
 var blend_position := Vector2.ZERO
 var rotation_speed: float
 
-
-func process_input(event: InputEvent) -> PlayerState:
-	if event.is_action_pressed("ui_focus_next"):
-		parent._blend_walk = false
-		return idle_state
-	return null
-
 func process_frame(delta: float) -> PlayerState:
 	# Suavização das transições das animações do blendspace2D
 	# Godot 3D - Basic Character Controller | Character Animation Tutorial: 5
@@ -34,5 +27,10 @@ func process_physics(delta: float) -> PlayerState:
 	# Vira personagem para direçao da camera quando detecta input de movimento
 	if parent._raw_input:
 		skin.global_rotation.y = lerp_angle(skin.rotation.y, camera_pivot.rotation.y, rotation_speed * delta)
-
+	
+	if !parent._blend_walk:
+		return idle_state
+	
+	# TODO pulo
+	
 	return null
