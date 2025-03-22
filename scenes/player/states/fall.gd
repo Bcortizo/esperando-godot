@@ -8,7 +8,7 @@ func process_physics(delta: float) -> PlayerState:
 	if parent.is_on_floor():
 		if parent._blend_walk:
 			return locomotion_state
-		elif parent._raw_input.length() > 0:
+		elif parent._raw_input:
 			return walking_state
 		else:
 			return idle_state

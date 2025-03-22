@@ -14,7 +14,7 @@ func process_physics(delta: float) -> PlayerState:
 	elif !parent.is_on_floor():
 		return fall_state
 	
-	if parent._raw_input.length() == 0:
+	if !parent._raw_input:
 		return idle_state
 	
 	return null
