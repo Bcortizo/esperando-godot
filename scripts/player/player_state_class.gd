@@ -29,3 +29,11 @@ func process_frame(delta: float) -> PlayerState:
 
 func process_physics(delta: float) -> PlayerState:
 	return null
+
+# TODO: Reorganizar código pro movimento ficar aqui
+func move_player() -> Vector3:
+	return Vector3.ZERO
+
+# TODO: Reorganizar código pra câmera ficar aqui
+func move_camera() -> void:
+	pass
